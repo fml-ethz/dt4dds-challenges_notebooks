@@ -1,0 +1,7 @@
+return_code,duration,identifier,success,iteration,input,codec_type,codec_slug,workflow_type,workflow_slug
+0,3.708549976348877,workflow,True,1,DNA_in_silica_nanoparticles.zip,DBGPSCodec,coderate_1-20,DecayChallengeWorkflow,decay-challenge
+1,71.21445488929749,decoding,False,1,DNA_in_silica_nanoparticles.zip,DBGPSCodec,coderate_1-20,DecayChallengeWorkflow,decay-challenge
+0,3.7076761722564697,workflow,True,2,DNA_in_silica_nanoparticles.zip,DBGPSCodec,coderate_1-20,DecayChallengeWorkflow,decay-challenge
+1,69.71641111373901,decoding,False,2,DNA_in_silica_nanoparticles.zip,DBGPSCodec,coderate_1-20,DecayChallengeWorkflow,decay-challenge
+0,3.7076029777526855,workflow,True,3,DNA_in_silica_nanoparticles.zip,DBGPSCodec,coderate_1-20,DecayChallengeWorkflow,decay-challenge
+0,74.07079291343689,decoding,True,3,DNA_in_silica_nanoparticles.zip,DBGPSCodec,coderate_1-20,DecayChallengeWorkflow,decay-challenge

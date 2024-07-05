@@ -1,0 +1,7 @@
+return_code,duration,identifier,success,iteration,input,codec_type,codec_slug,workflow_type,workflow_slug
+0,27.70235276222229,workflow,True,1,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,PhotolithographyChallengeWorkflow,photolithography-challenge
+0,1907.6513838768005,decoding,True,1,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,PhotolithographyChallengeWorkflow,photolithography-challenge
+0,27.699999809265137,workflow,True,2,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,PhotolithographyChallengeWorkflow,photolithography-challenge
+0,1881.9738364219666,decoding,True,2,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,PhotolithographyChallengeWorkflow,photolithography-challenge
+0,27.599944829940796,workflow,True,3,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,PhotolithographyChallengeWorkflow,photolithography-challenge
+0,1918.3509345054626,decoding,True,3,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,PhotolithographyChallengeWorkflow,photolithography-challenge

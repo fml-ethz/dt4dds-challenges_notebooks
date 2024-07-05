@@ -1,0 +1,7 @@
+return_code,duration,identifier,success,iteration,input,codec_type,codec_slug,workflow_type,workflow_slug
+0,2.4066014289855957,workflow,True,1,DNA_in_silica_nanoparticles.zip,DNAFountainCodec,coderate_photolithography_0-50,NoWorkflow,test
+0,1.955702781677246,decoding,True,1,DNA_in_silica_nanoparticles.zip,DNAFountainCodec,coderate_photolithography_0-50,NoWorkflow,test
+0,1.3538281917572021,workflow,True,2,DNA_in_silica_nanoparticles.zip,DNAFountainCodec,coderate_photolithography_0-50,NoWorkflow,test
+0,1.657423973083496,decoding,True,2,DNA_in_silica_nanoparticles.zip,DNAFountainCodec,coderate_photolithography_0-50,NoWorkflow,test
+0,1.2033882141113281,workflow,True,3,DNA_in_silica_nanoparticles.zip,DNAFountainCodec,coderate_photolithography_0-50,NoWorkflow,test
+0,1.7541484832763672,decoding,True,3,DNA_in_silica_nanoparticles.zip,DNAFountainCodec,coderate_photolithography_0-50,NoWorkflow,test

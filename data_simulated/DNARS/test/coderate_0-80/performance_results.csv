@@ -1,0 +1,7 @@
+return_code,duration,identifier,success,iteration,input,codec_type,codec_slug,workflow_type,workflow_slug
+0,2.4063711166381836,workflow,True,1,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,NoWorkflow,test
+0,45.98561477661133,decoding,True,1,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,NoWorkflow,test
+0,1.3532586097717285,workflow,True,2,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,NoWorkflow,test
+0,46.43606448173523,decoding,True,2,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,NoWorkflow,test
+0,1.2531681060791016,workflow,True,3,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,NoWorkflow,test
+0,45.83579969406128,decoding,True,3,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-80,NoWorkflow,test

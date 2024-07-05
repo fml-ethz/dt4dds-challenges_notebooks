@@ -1,0 +1,14 @@
+*.gz
+*.fastq
+*.fastq
+*.bam
+*.errormap
+*.decoded
+*.log
+*.out
+*.unmerged
+R1.fq*
+R2.fq*
+*.unzip
+local.breakmetrics.csv
+local.readmetrics.csv

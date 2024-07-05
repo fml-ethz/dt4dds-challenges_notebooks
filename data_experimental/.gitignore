@@ -1,0 +1,9 @@
+*.gz
+*.fastq
+*.fastq
+*.bam
+*.errormap
+*.log
+*.out
+local.breakmetrics.csv
+local.readmetrics.csv

@@ -1,0 +1,7 @@
+*
+!.gitignore
+!install.sh
+!encode.sh
+!decode.sh
+!decode_new.py
+!encode_new.py

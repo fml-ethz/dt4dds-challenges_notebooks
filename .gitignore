@@ -1,0 +1,6 @@
+*.png
+*.pyc
+*.svg
+*.pdf
+.vscode
+run36.npy

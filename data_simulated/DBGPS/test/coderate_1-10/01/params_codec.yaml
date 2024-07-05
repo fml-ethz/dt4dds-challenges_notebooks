@@ -1,0 +1,6 @@
+slug: coderate_1-10
+command_path_encode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/DBGPS/encode.sh
+command_path_decode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/DBGPS/decode.sh
+droplet_num: 2300
+chunk_size: 35
+file_size: 51632

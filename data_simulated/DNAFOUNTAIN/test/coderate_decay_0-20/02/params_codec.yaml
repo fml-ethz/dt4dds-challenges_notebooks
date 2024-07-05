@@ -1,0 +1,6 @@
+slug: coderate_decay_0-20
+command_path_encode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/dnafountain/encode.sh
+command_path_decode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/dnafountain/decode.sh
+size: 32
+alpha: 7.5
+file_size: 51632

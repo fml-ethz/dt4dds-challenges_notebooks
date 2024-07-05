@@ -1,0 +1,4 @@
+success,failed_at,iteration,input,codec_type,codec_slug,workflow_type,workflow_slug,filesize_byte,filesize_bit,n_sequences,n_bases,sequence_length,code_rate
+False,,1,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-70,PhotolithographyChallengeWorkflow,photolithography-challenge,51632,413056,8200,590400,72.0,0.6996205962059621
+False,,2,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-70,PhotolithographyChallengeWorkflow,photolithography-challenge,51632,413056,8200,590400,72.0,0.6996205962059621
+False,,3,DNA_in_silica_nanoparticles.zip,DNARSCodec,coderate_0-70,PhotolithographyChallengeWorkflow,photolithography-challenge,51632,413056,8200,590400,72.0,0.6996205962059621

@@ -1,0 +1,10 @@
+slug: coderate_0-60
+command_path_encode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/dna_rs_coding/encode.sh
+command_path_decode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/dna_rs_coding/decode.sh
+mi: 6
+mo: 14
+index: 24
+seq_length: 72
+red_factor: 6
+num_seq: 9500
+file_size: 51632

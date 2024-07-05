@@ -1,0 +1,6 @@
+*
+!.gitignore
+!install.sh
+!encode.sh
+!decode.sh
+!clustering.py

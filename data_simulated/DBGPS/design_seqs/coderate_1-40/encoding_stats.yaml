@@ -1,0 +1,14 @@
+chunk_size: 35
+code_rate: 1.1473777777777778
+codec: DBGPSCodec
+command_path_decode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/DBGPS/decode.sh
+command_path_encode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/DBGPS/encode.sh
+droplet_num: 1800
+file_size: 51632
+filesize_bit: 413056
+filesize_byte: 51632
+n_bases: 360000
+n_sequences: 1800
+name: coderate_1-40
+sequence_length: 200.0
+slug: coderate_1-40

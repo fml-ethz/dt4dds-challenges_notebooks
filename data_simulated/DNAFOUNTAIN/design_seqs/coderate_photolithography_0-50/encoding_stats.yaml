@@ -1,0 +1,14 @@
+alpha: 1.8
+code_rate: 0.4999709499370582
+codec: DNAFountainCodec
+command_path_decode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/dnafountain/decode.sh
+command_path_encode: /cluster/home/agimpel/Git/dt4dds_scenarioanalysis/50_Simulation/simulator/codecs/dnafountain/encode.sh
+file_size: 51632
+filesize_bit: 413056
+filesize_byte: 51632
+n_bases: 826160
+n_sequences: 10327
+name: coderate_photolithography_0-50
+sequence_length: 80.0
+size: 14
+slug: coderate_photolithography_0-50
