@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "$(dirname "$0")"
 
 # get the read files
 wget ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR526/ERR5265252/cap-protected_S2_L001_R1_001.fastq.gz -O R1_original.fq.gz

@@ -3,36 +3,129 @@
 - [Overview](#overview)
 - [Software Requirements](#software-requirements)
 - [Installation Guide](#installation-guide)
+- [Usage Guide](#usage-guide)
 - [Data Sources](#data-sources)
 - [Codec Sources](#codec-sources)
+- [License](#license)
 
 # Overview
-This repository contains the data analysis, in the form of Jupyter Notebooks and data files, for the error characterization and figures in the following publication:
+This repository contains both the data processing pipeline to generate intermediate files from the raw experimental data, as well as Jupyter notebooks for data analysis and plotting, for the error characterization and figures in the following publication:
 
 > Gimpel, A.L., Stark, W.J., Heckel, R., Grass R.N. Challenges for error-correction coding in DNA data storage: photolithographic synthesis and DNA decay. bioRxiv 2024.07.04.602085 (2024). https://doi.org/10.1101/2024.07.04.602085
 
 The program `dt4dds-challenges`, providing a digital benchmark for current challenges in DNA data storage, is found in the [dt4dds-challenges repository](https://github.com/fml-ethz/dt4dds-challenges).
 
 # Software requirements
-The data analysis has been tested and performed on Windows 10 using Python 3.12. The following Python packages are required: 
-```
-dt4dds
-pandas
-numpy
-statsmodels
-plotly
-scipy
-```
+The data processing pipeline is implemented with bash scripts, to be run either locally or on a computing cluster. The data analysis scripts can be run locally as Jupyter notebooks.
 
-Moreover, the error-correction codes used for the benchmarking in `50_Simulation`, need to be installed from their respective sources. For this, installation scripts are provided in [`./50_Simulation/simulator/codecs`](/50_Simulation/simulator/codecs/). See also the Section on [Codec Sources](#codec-sources).
+## Data processing pipeline
+The data processing pipeline has been tested and performed on Ubuntu 23.10. The following software is required:
+```
+bbmap (v39.01)
+dt4dds-challenges (v1.0.0)
+kalign (v3.4.0)
+NGmerge (v0.3)
+Python (v3.12.3) with dt4dds (v1.1.0)
+```
+In addition, standard command line tools such as git and wget are required.
+
+
+## Data analysis scripts
+The data analysis scripts have been tested and were run on Windows 10 using Python 3.12. The following Python packages are required: 
+```
+dt4dds==1.1.0
+pandas==2.2.2
+numpy==1.26.4
+statsmodels==0.14.2
+plotly==5.20.0
+scipy==1.13.0
+biopython==1.83
+numba==0.59.1
+rapidfuzz==3.8.1
+edlib==1.3.9
+```
+In addition, running the Jupyter notebooks requires a local Jupyter installation.
 
 
 # Installation guide
-To clone this repository from Github, use
+To clone this repository from Github, use:
 ```bash
 git clone https://github.com/fml-ethz/dt4dds-challenges_notebooks
 cd dt4dds-challenges_notebooks
 ```
+
+If you intend to re-run the data processing pipelines, install the required software locally with:
+```bash
+./00_Tools/bbmap/install.sh
+./00_Tools/dt4dds-challenges/install.sh
+./00_Tools/kalign/install.sh
+./00_Tools/ngmerge/install.sh
+pip install dt4dds=1.1.0
+```
+
+In order to run the data processing pipelines, the raw experimental data must be downloaded from their respective sources. For this, run the download scripts provided in the subfolders of [`./data_experimental/`](/data_experimental/):
+```bash
+./data_experimental/Aging_Meiser/setup.sh
+./data_experimental/Aging_Song/setup.sh
+./data_experimental/Photolithography_Antkowiak/setup.sh
+./data_experimental/Photolithography_Lietard/setup.sh
+```
+Note that the sequencing dataset "CB_120" by Lietard et al. has not been deposited publicly and must be requested from the original authors. To run the data processing pipeline for this dataset, manually copy the read files as `R1_original.fq.gz` and `R2_original.fq.gz` into [the respective subfolder at ./data_experimental/Photolithographic_Lietard/high_density](/data_experimental/Photolithographic_Lietard/high_density). See also the Section on [Data Sources](#data-sources).
+
+Moreover, the error-correction codes used for the benchmarking in `50_Simulation` need to be installed from their respective sources. For this, run the installation scripts provided in [`./50_Simulation/simulator/codecs`](/50_Simulation/simulator/codecs/):
+```bash
+./50_Simulation/simulator/codecs/DBGPS/install.sh
+./50_Simulation/simulator/codecs/dna_rs_coding/install.sh
+./50_Simulation/simulator/codecs/dnafountain/install.sh
+```
+See also the Section on [Codec Sources](#codec-sources).
+
+Finally, install the Python packages required for running the data analysis scripts:
+```bash
+pip install dt4dds=1.1.0 numpy pandas scipy statsmodels plotly
+```
+and download the external dataset for comparing coverage bias:
+```bash
+wget -P ./30_Photolithographic https://github.com/uwmisl/storage-biasing-ncomms20/blob/master/data/run36.npy 
+```
+
+
+
+
+# Usage guide
+The data processing pipelines must not be run prior to running the data analysis, as all intermediate file generated by the data processing pipelines are already provided in this repository. Nonetheless, if re-running the data processing pipelines is desired, follow the following steps. Otherwise, skip the steps outlined for the data processing pipeline and move directly to the data analysis scripts.
+
+## Data processing pipeline
+There are two options for running the data processing pipelines: locally or on a cluster (using Slurm Workload Manager). For both, the scripts are provided in the subfolders of [`./data_experimental/`](/data_experimental/), either as `local.sh` for local processing, or as `slurm.sh` for processing with Slurm. As an example for local processing, run:
+```bash
+./data_experimental/Aging_Meiser/local.sh
+./data_experimental/Aging_Song/local.sh
+./data_experimental/Photolithography_Antkowiak/local.sh
+./data_experimental/Photolithography_Lietard/local.sh
+```
+This will re-create the intermediate files located in the `analysis` folder of each individual dataset.
+
+To run the codec tests, scripts are provided in the [`./50_Simulation/`](/50_Simulation/) directory. For each codec, design files for the different encoders and code rates have been created by running:
+```bash
+python3 50_Simulation/create_design_files.py
+```
+which will be deposited in [`./data_simulated/`](/data_simulated/) subdirectories.
+
+Then, a choice of scenario (`test`, `decay`, or `photolithography`), codec (`DBGPS`, `DNARS`, or `DNAFOUNTAIN`), and code rate (e.g., `1.10`) can be run with:
+```bash
+python3 50_Simulation/runner.py <SCENARIO> <CODEC> <CODERATE>
+```
+The resulting intermediate files will also be placed in the respective [`./data_simulated/`](/data_simulated/) subdirectories.
+
+
+## Data analysis scripts
+The Jupyter notebooks used for data analysis and plotting are distributed across the four directories [`./21_BeadCleanup/`](./21_BeadCleanup/), [`./30_Photolithography/`](./30_Photolithography/), [`./40_Aging/`](./40_Aging/), and [`./50_Simulation/`](./50_Simulation/). In each directory, multiple notebooks use the intermediate files created by the data processing pipelines to analyse an aspect of the error and bias patterns.
+
+Each Jupyter notebook can be independently run locally to reproduce the plots presented in the manuscript.
+
+
+
+
 
 
 # Data sources
@@ -42,25 +135,25 @@ Some of the analysis in this repository is based on sequencing data from other p
 ## /data_experimental/Aging_Meiser
 > Meiser, L.C., Gimpel, A.L., Deshpande, T. et al. Information decay and enzymatic information recovery for DNA data storage. Commun Biol 5, 1117 (2022). https://doi.org/10.1038/s42003-022-04062-9
 
-The data is publicly available in this [figshare repository](https://figshare.com/articles/dataset/Sequencing_data/21070684).
+The data is publicly available in this [figshare repository](https://figshare.com/articles/dataset/Sequencing_data/21070684). The datasets used were "S3" as `unaged`, "S2" as `aged`, and "S1" as `repaired`.
 
 
 ## /data_experimental/Aging_Song
 > Song, L., Geng, F., Gong, ZY. et al. Robust data storage in DNA by de Bruijn graph-based de novo strand assembly. Nat Commun 13, 5361 (2022). https://doi.org/10.1038/s41467-022-33046-w
 
-The data is publicly available in the figshare repositories [1](https://figshare.com/articles/online_resource/Error-prone_PCR_1st_round/16727122/2), [2](https://figshare.com/articles/online_resource/Error-prone_PCR_3st_and_4st_rounds/17193128/1), and [3](https://figshare.com/articles/online_resource/Error-prone_PCR_5st_and_6st_rounds/18515045/1).
+The data is publicly available in the figshare repositories [1](https://figshare.com/articles/online_resource/Accelerated_aging_samples_of_70_C_for_0_and_14_days/17193170/2), and [2](https://figshare.com/articles/online_resource/Accelerated_aging_samples_of_70_C_for_56_and_70_days/17192639/1). The datasets used were "P10" as `unaged`, "HT228" as `28d`, "HT4" as `56d`, and "HT5" as `70d`.
 
 
 ## /data_experimental/Photolithographic_Antkowiak
 > Antkowiak, P.L., Lietard, J., Darestani, M.Z. et al. Low cost DNA data storage using photolithographic synthesis and advanced information reconstruction and error correction. Nat Commun 11, 5345 (2020). https://doi.org/10.1038/s41467-020-19148-3
 
-The data is publicly available in this [figshare repository](https://figshare.com/collections/Low_Cost_DNA_Data_Storage_Using_Photolithographic_Synthesis_and_Advanced_Information_Reconstruction_and_Error_Correction/5128901/1). The data for File 3 was requested from the authors.
+The original data for `File1` and `File2` is publicly available in this [figshare repository](https://figshare.com/collections/Low_Cost_DNA_Data_Storage_Using_Photolithographic_Synthesis_and_Advanced_Information_Reconstruction_and_Error_Correction/5128901/1). The data for File 3 was originally requested from the authors, and has now been made publicly available in this [figshare repository](https://figshare.com/articles/dataset/_b_Low_Cost_DNA_Data_Storage_Using_Photolithographic_Synthesis_and_Advanced_Information_Reconstruction_and_Error_Correction_-_File_3_b_/27134316?file=49503285) with permission from the original authors. The datasets used were "File 1" as `File1`, "File2" as `File 2`, and "File 3" as `File3`.
 
 
 ## /data_experimental/Photolithographic_Lietard
 > Jory Lietard, Adrien Leger, Yaniv Erlich, Norah Sadowski, Winston Timp, Mark M Somoza, Chemical and photochemical error rates in light-directed synthesis of complex DNA libraries, Nucleic Acids Research, Volume 49, Issue 12, 9 July 2021, Pages 6687–6701, https://doi.org/10.1093/nar/gkab505
 
-The data is publicly available in the European Nucleotides Archive (ENA) under project number [PRJEB43002](https://www.ebi.ac.uk/ena/browser/view/PRJEB43002). The data for the high-density synthesis was requested from the authors.
+The data is publicly available in the European Nucleotides Archive (ENA) under project number [PRJEB43002](https://www.ebi.ac.uk/ena/browser/view/PRJEB43002). The data for the high-density synthesis ("CB_120") was requested from the authors. The datasets used were "2SZ" as `normal`, "Capped 2SZ" as `capped`, "4SZ" as `spaced`, and "CB_120" as `denser`.
 
 
 ## /30_Photolithographic/run36.npy
@@ -90,3 +183,7 @@ The codec is publicly available in these GitHub repositories: [reinhardh/dna_rs_
 > Yaniv Erlich, Dina Zielinski, DNA Fountain enables a robust and efficient storage architecture.Science 355, 950-954 (2017). DOI:10.1126/science.aaj2038
 
 The codec is publicly available in this [GitHub repository](https://github.com/TeamErlich/dna-fountain). A fork porting the original code from Python 2 to Python 3 by Yihang Du, Wenrong Wu and Justin Brody (Franklin & Marshall College, PA, USA) was used, see [this GitHub repository](https://github.com/jdbrody/dna-fountain).
+
+
+# License
+This project is licensed under the GPLv3 license, see [here](LICENSE). Note that the additional programs that can be installed via the convenience scripts in the [00_Tools subdirectory](/00_Tools/) are the property of their respective owners and have their own licenses.

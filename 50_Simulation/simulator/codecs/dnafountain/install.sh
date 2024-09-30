@@ -1,4 +1,5 @@
 #!/bin/bash 
+cd "$(dirname "$0")"
 set -e
 
 git clone https://github.com/jdbrody/dna-fountain.git

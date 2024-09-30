@@ -1,4 +1,5 @@
 #!/bin/bash 
+cd "$(dirname "$0")"
 
 # run simulation
 ../../00_Tools/dt4dds-challenges/dt4dds-challenge photolithography ./design_files.fasta ./R1.fq ./R2.fq -f fastq --physical_redundancy 200 --sequencing_depth 200

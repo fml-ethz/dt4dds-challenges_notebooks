@@ -1,4 +1,5 @@
 #!/bin/bash
+cd "$(dirname "$0")"
 
 # get the read files
 wget https://figshare.com/ndownloader/files/22305708 -O R1_original.fq.gz
